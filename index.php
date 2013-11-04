@@ -16,12 +16,12 @@ $fbuser = $_SESSION['fbuser'];
     <title>Stylish Portfolio Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="asset/css/bootstrap.css" rel="stylesheet">
+    <link href="./css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
     <link rel="stylesheet"  href="css/bootstrap-datetimepicker.css">
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./css/stylish-portfolio.css" rel="stylesheet">
+    <link href="./font-awesome/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div  class="services">
@@ -208,10 +208,10 @@ echo '<a href="'.$logOutUrl.'">Log Out</a>';
 </div>
 </div>
 </div>
- <script src="asset/js/jquery.js"></script>
-  <script src="asset/js/bootstrap.js"></script>
-  <script src="js/bootstrap-datetimepicker.js"></script>
-<script src="js/bootstrap-datetimepicker.id.js"></script>
+ <script src="./js/jquery.js"></script>
+  <script src="./js/bootstrap.js"></script>
+  <script src="./js/bootstrap-datetimepicker.js"></script>
+<script src="./js/bootstrap-datetimepicker.id.js"></script>
 <script type="text/javascript">
     $('.form_datetime').datetimepicker({
         language:  'id',
