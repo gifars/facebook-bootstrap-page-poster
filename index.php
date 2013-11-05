@@ -79,19 +79,7 @@ if($_POST)
      
     );
    
-    /*
-    //posts message on page statues 
-    $msg_body = array(
-      'message' => $userMessage,
-      'name' => 'Message Posted from Saaraan.com!',
-      'caption' => "Nice stuff",
-      'link' => 'http://www.saaraan.com/assets/ajax-post-on-page-wall',
-      'description' => 'Demo php script posting message on this facebook page.',
-      'picture' => 'http://www.saaraan.com/templates/saaraan/images/logo.png'
-      
-      
-      );
-      */
+    
   
   if ($fbuser) {
     try {
