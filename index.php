@@ -1,3 +1,6 @@
+<?php
+include_once("config.php");
+?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,7 +13,7 @@
     <title>Stylish Portfolio Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="asset/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
     <link rel="stylesheet"  href="css/bootstrap-datetimepicker.css">
@@ -37,8 +40,7 @@
 
 
 <?php
-include_once("config.php");
-$photo_url = "http://static.adzerk.net/Advertisers/60abb4b317034aa2af0bc697e6f02963.png";
+
 
 date_default_timezone_set('Asia/Makassar');
 
@@ -79,7 +81,19 @@ if($_POST)
      
     );
    
-    
+    /*
+    //posts message on page statues 
+    $msg_body = array(
+      'message' => $userMessage,
+      'name' => 'Message Posted from Saaraan.com!',
+      'caption' => "Nice stuff",
+      'link' => 'http://www.saaraan.com/assets/ajax-post-on-page-wall',
+      'description' => 'Demo php script posting message on this facebook page.',
+      'picture' => 'http://www.saaraan.com/templates/saaraan/images/logo.png'
+      
+      
+      );
+      */
   
   if ($fbuser) {
     try {
@@ -166,7 +180,7 @@ echo '<a href="'.$logOutUrl.'">Log Out</a>';
     ?>
 </select>
 <br>
-<label>Masukkan tanggal. minimal 10 menit dan makasimal 6 bulan setelah waktu sekarang </label>
+<label>Masukkan tanggal. minimal 10 menit dan maksimal 6 bulan setelah waktu sekarang </label>
 <div class="input-group date form_datetime"  style="width: 65%" data-date-format="dd-mm-yyyy hh:ii:ss" data-link-field="dtp_input1">
                     <input class="form-control" type="text" required="required" value="">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
@@ -174,8 +188,7 @@ echo '<a href="'.$logOutUrl.'">Log Out</a>';
                 </div>
         <input type="hidden" name="tanggal" id="dtp_input1" value="" /><br/>
 
-<label>Message
-<span class="small">Tulis pesan Postingan Anda!</span>
+<label>Tulis pesan Postingan Anda!
 
 </label>
 <br>
@@ -190,8 +203,8 @@ echo '<a href="'.$logOutUrl.'">Log Out</a>';
 </div>
 </div>
 </div>
- <script src="asset/js/jquery.js"></script>
-  <script src="asset/js/bootstrap.js"></script>
+ <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
   <script src="js/bootstrap-datetimepicker.js"></script>
 <script src="js/bootstrap-datetimepicker.id.js"></script>
 <script type="text/javascript">
@@ -210,7 +223,6 @@ echo '<a href="'.$logOutUrl.'">Log Out</a>';
 </body>
 </html>
 <?php
-}
 }
 ?>
 
