@@ -7,18 +7,18 @@ include_once("config.php");
 <title>Post to user Page Wall</title>
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Stylish Portfolio Template for Bootstrap</title>
+    <meta name="description" content="Post to user Page Wall Using facebook php sdk">
+    <meta name="author" content="faisal">
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
     <link rel="stylesheet"  href="css/bootstrap-datetimepicker.css">
-    <link href="css/stylish-portfolio.css" rel="stylesheet">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet"  href="css/bootstrap-select.css">
+
+  
+  
 </head>
 <body>
 <div  class="container">
@@ -29,23 +29,12 @@ include_once("config.php");
             <hr>
           </div>
         </div>
- <div class="row">
+<div class="row">
   <div class="col-md-8 col-md-offset-2">
-
-
-<div class="container">
-<form name="form" method="post" action="">
-
-
-
+    <div class="container">
+      <form name="form" method="post" action="">
 
 <?php
-
-
-date_default_timezone_set('Asia/Jakarta');
-
-// $dt = new DateTime('29-10-2013 09:50:46');
-
  
 if($_POST)
 {
@@ -81,7 +70,7 @@ if($_POST)
      
     );
    
-  
+
   
   if ($fbuser) {
     try {
@@ -101,8 +90,14 @@ if($_POST)
      
    
      
-     echo '<div class="alert alert-success">
+     echo '<div class="alert alert-success">';
+     echo '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
      Your message is posted on your facebook wall, <a target="_blank" href="http://www.facebook.com/'.$userPageId.'?sk=allactivity">Visit Your Page</a>
+     </div>';
+     //hapus baris 95 hingga 99 untuk menghilangkan notifikasi donasi
+     echo '<br>';
+     echo '<div class="alert alert-success">
+     Mohon Donasinya! Agar saya bisa terus Mengembangkan Tools ini, berupa pulsa seiklasnya saja, kirim ke no 085256599855
      </div>';
    
     
@@ -130,11 +125,7 @@ if ($fbuser) {
 
 if($fbuser && empty($postResults))
 {
-		/*
-		if user is logged in but FQL is not returning any pages, we need to make sure user does have a page
-		OR "manage_pages" permissions isn't granted yet by the user. 
-		Let's give user an option to grant application permission again.
-		*/
+	
 		$loginUrl = $facebook->getLoginUrl(array('redirect_uri'=>$homeurl,'scope'=>$fbPermissions));
 		echo '<br />Could not get your page details!';
 		echo '<br /><a href="'.$loginUrl.'">Click here to try again!</a>'; 
@@ -145,22 +136,13 @@ if($fbuser && empty($postResults))
 ?>
 
 
-<?php /*
-
-Get Log out URL
-Due to some bug or whatever, SDK still thinks user is logged in even
-after user logs out. To deal with it, user is redirected to another page "logged-out.php" after logout
-it is working fine for me with this trick. Hope it works for you too.
-
-$logOutUrl = $facebook->getLogoutUrl(array('next'=>$homeurl.'logged-out.php'));
-echo '<a href="'.$logOutUrl.'">Log Out</a>';
-*/
+<?php 
 ?>
 </p>
 <label>Pilih Halaman Fans Page Anda
 </label>
 <br>
-<select class="form-control" style="width: 65%" name="userpages" id="upages">
+<select class="selectpicker" style="width: 65%" name="userpages" id="upages">
 	<?php
     foreach ($postResults as $postResult) {
             echo '<option value="'.$postResult["page_id"].'">'.$postResult["name"].'</option>';
@@ -170,11 +152,11 @@ echo '<a href="'.$logOutUrl.'">Log Out</a>';
 <br>
 <label>Masukkan tanggal. minimal 10 menit dan maksimal 6 bulan setelah waktu sekarang </label>
 <div class="input-group date form_datetime"  style="width: 65%" data-date-format="dd-mm-yyyy hh:ii:ss" data-link-field="dtp_input1">
-                    <input class="form-control" type="text" required="required" value="">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-          <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
-                </div>
-        <input type="hidden" name="tanggal" id="dtp_input1" value="" /><br/>
+<input class="form-control" type="text" required="required" value="">
+<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+</div>
+<input type="hidden" name="tanggal" id="dtp_input1" value="" /><br/>
 
 <label>Tulis pesan Postingan Anda!
 
@@ -191,10 +173,13 @@ echo '<a href="'.$logOutUrl.'">Log Out</a>';
 </div>
 </div>
 </div>
- <script src="js/jquery.js"></script>
-  <script src="js/bootstrap.js"></script>
-  <script src="js/bootstrap-datetimepicker.js"></script>
+
+<!-- call all javascript file here -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap-datetimepicker.js"></script>
 <script src="js/bootstrap-datetimepicker.id.js"></script>
+<script src="js/bootstrap-select.js"></script>
 <script type="text/javascript">
     $('.form_datetime').datetimepicker({
         language:  'id',
@@ -208,12 +193,20 @@ echo '<a href="'.$logOutUrl.'">Log Out</a>';
     });
 
 </script>
+<script type="text/javascript">
+        $(window).on('load', function () {
+
+            $('.selectpicker').selectpicker({
+                'selectedText': 'cat'
+            });
+
+            // $('.selectpicker').selectpicker('hide');
+        });
+    </script>
 </body>
 </html>
 <?php
 }
 ?>
-
-
 </body>
 </html>

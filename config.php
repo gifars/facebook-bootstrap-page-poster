@@ -1,11 +1,11 @@
 <?php
 include_once("inc/facebook.php"); //include facebook SDK
- 
+date_default_timezone_set('Asia/Makassar'); // change to your current Timezone
 ######### edit details ##########
-$appId = '346921398777410'; //Facebook App ID
-$appSecret = '9ccc8b93e247f8457739ef85bd9991b9'; // Facebook App Secret
-$return_url = 'http://faisal.bl.ee';  //return url (url to script)
-$homeurl = 'http://faisal.bl.ee';  //return to home
+$appId = '717073518321845'; //Facebook App ID
+$appSecret = '585b19da76f454ac6448dadad3359a52'; // Facebook App Secret
+$return_url = 'http://localhost/facebook/';  //return url (url to script)
+$homeurl = 'http://localhost/facebook/';  //return to home
 $fbPermissions = 'publish_stream,manage_pages';  //Required facebook permissions
 ##################################
 
@@ -17,4 +17,5 @@ $facebook = new Facebook(array(
 ));
 
 $fbuser = $facebook->getUser();
+
 ?>
