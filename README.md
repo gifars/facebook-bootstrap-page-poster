@@ -8,3 +8,5 @@ please report an Issue <a href="https://github.com/gifars/facebook-bootstrap-pag
 and don't forget to says thanks <a href="https://github.com/gifars/facebook-bootstrap-page-poster/issues/2">here</a>
 
 <strong> Semoga Bermanfaat</strong>
+<strong> Screen Shot</strong>
+<img src"http://sphotos-d.ak.fbcdn.net/hphotos-ak-ash3/1452335_10201714788665056_342565507_n.jpg">
