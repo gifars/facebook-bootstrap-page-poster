@@ -42,7 +42,7 @@ include_once("config.php");
 <?php
 
 
-date_default_timezone_set('Asia/Makassar');
+date_default_timezone_set('Asia/Jakarta');
 
 // $dt = new DateTime('29-10-2013 09:50:46');
 
