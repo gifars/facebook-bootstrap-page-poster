@@ -7,4 +7,4 @@ please report an Issue <a href="https://github.com/gifars/facebook-bootstrap-pag
 
 and don't forget to says thanks <a href="https://github.com/gifars/facebook-bootstrap-page-poster/issues/2">here</a>
 
-<strong> Semoga Bermanfaar</strong>
+<strong> Semoga Bermanfaat</strong>
