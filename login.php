@@ -32,12 +32,7 @@ include_once("config.php");
 $loginUrl = $facebook->getLoginUrl(array('redirect_uri'=>$homeurl,'scope'=>$fbPermissions));
     echo '<a href='.$loginUrl.' class="btn btn-primary">Masuk dengan Facebook</a>'; ?> 
 
-    <br><br><br><br><br>
-  
-        <h2 style="color: red">Mohon Donasinya!</h2>
-        <h3 style="color: blue">Agar saya bisa terus Mengembangkan Tools ini, donasinya berupa pulsa seiklasnya saja</h3>
-        <h2 style="color: green">kirim Ke No : 085256599855</h2>
-
+   
       </div>
       
     </div>
