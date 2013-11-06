@@ -16,12 +16,14 @@ include_once("config.php");
     <!-- Add custom CSS here -->
     <link rel="stylesheet"  href="css/bootstrap-datetimepicker.css">
     <link rel="stylesheet"  href="css/bootstrap-select.css">
+    <link rel="stylesheet"  href="css/costumstyle.css">
+
 
   
   
 </head>
 <body>
-<div  class="container">
+<div  class="loginpage">
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2 text-center">
@@ -31,7 +33,7 @@ include_once("config.php");
         </div>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <div class="container">
+    <div class="well">
       <form name="form" method="post" action="">
 
 <?php
@@ -49,11 +51,49 @@ if($_POST)
 
 
 
-  if(strlen($userMessage)<1) 
+  if($tanggal && $photo) //schedule post plus photos update and message
   {
-    //message is empty
-    $userMessage = 'No message was entered!';
+    $post_url = '/'.$userPageId.'/photos';
+    $page_info = $facebook->api("$userPageId?fields=access_token");
+    $msg_body = array(
+      'access_token'  => $page_info['access_token'],
+      'message' => $userMessage,
+      'url' => $photo,
+      'published' => false,
+      'scheduled_publish_time' => $dt->getTimestamp()
+      );
+      
+  }elseif ($tanggal && $userMessage) { //schedule post with message only 
+    $post_url = '/'.$userPageId.'/feed';
+    $page_info = $facebook->api("$userPageId?fields=access_token");
+    $msg_body = array(
+      'access_token'  => $page_info['access_token'],
+      'message' => $userMessage,
+      'published' => false,
+      'scheduled_publish_time' => $dt->getTimestamp()
+      );
   }
+  elseif ($photo && $userMessage) { //schedule post with message only 
+    $post_url = '/'.$userPageId.'/photos';
+    $page_info = $facebook->api("$userPageId?fields=access_token");
+    $msg_body = array(
+      'access_token'  => $page_info['access_token'],
+      'message' => $userMessage,
+      'url' => $photo,
+      );
+  } elseif ($userMessage) { //schedule post with message only 
+    $post_url = '/'.$userPageId.'/feed';
+    $page_info = $facebook->api("$userPageId?fields=access_token");
+    $msg_body = array(
+      'access_token'  => $page_info['access_token'],
+      'message' => $userMessage,
+     
+      );
+  }
+
+
+  else //Update message and photos with out schedule post
+  {
   
     //HTTP POST request to PAGE_ID/feed with the publish_stream
     $post_url = '/'.$userPageId.'/photos';
@@ -64,11 +104,10 @@ if($_POST)
       'access_token'  => $page_info['access_token'],
       'message' => $userMessage,
       'url' => $photo,
-      'published' => false,
-      'scheduled_publish_time' => $dt->getTimestamp()
+ 
       
-     
-    );
+     );
+  }
    
 
   
@@ -96,7 +135,7 @@ if($_POST)
      </div>';
      //hapus baris 95 hingga 99 untuk menghilangkan notifikasi donasi
      echo '<br>';
-     echo '<div class="alert alert-success">
+     echo '<div class="alert alert-danger">
      Mohon Donasinya! Agar saya bisa terus Mengembangkan Tools ini, berupa pulsa seiklasnya saja, kirim ke no 085256599855
      </div>';
    
@@ -150,9 +189,10 @@ if($fbuser && empty($postResults))
     ?>
 </select>
 <br>
-<label>Masukkan tanggal. minimal 10 menit dan maksimal 6 bulan setelah waktu sekarang </label>
+<label>Masukkan tanggal. minimal 10 menit dan maksimal 6 bulan setelah waktu sekarang
+kosongkan untuk update sekarang </label>
 <div class="input-group date form_datetime"  style="width: 65%" data-date-format="dd-mm-yyyy hh:ii:ss" data-link-field="dtp_input1">
-<input class="form-control" type="text" required="required" value="">
+<input class="form-control" type="text" value="">
 <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
 <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
 </div>
@@ -162,10 +202,10 @@ if($fbuser && empty($postResults))
 
 </label>
 <br>
-<textarea class="form-control" rows="7" name="message" required="required"></textarea>
+<textarea class="form-control" rows="7" name="message"></textarea>
 <br>
-<label>Masukkan URL foto Anda. Ex : http://situsanda.com/foto.jpg</label>
-<input class="form-control" required="required" name="photos">
+<label>Masukkan URL foto Anda. Ex : http://situsanda.com/foto.jpg kosong jika post anda tidak menggunakan foto</label>
+<input class="form-control" name="photos">
  <br>         
 <button type="submit" class="btn btn-primary btn-sm" id="submit_button">Send Message</button>
 <div class="spacer"></div>
