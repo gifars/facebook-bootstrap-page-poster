@@ -1,0 +1,9 @@
+web1: 
+name: facebook-app 
+php_version: 5.3.8
+php_extensions: 
+-curl
+php_error_reporting: 30719
+php_display_errors: "0"
+static_expire: 604800
+php_max_execution_time: 3600
